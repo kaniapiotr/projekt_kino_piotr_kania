@@ -14,7 +14,8 @@ document.querySelector('.close2').addEventListener('click', function () {
 document.getElementById('btn-rej').addEventListener('click', function () {
   document.querySelector('.modal-kino').style.display = 'flex';
 });
-
+ 
+// zamknięcie modala przez kliknięcie obok
 
 var modal = document.querySelector('.modal-kino');
 window.onclick = function (event) {
@@ -34,13 +35,14 @@ document.getElementById('btn-kon').addEventListener('click', function () {
   document.querySelector('.modal-kino-wybor').style.display = 'flex';
 });
 
+// zamknięcie modala przez kliknięcie obok - jeśli się go włączy to modal logowania nie wyłącza się w ten sposób
 
-var modal_wybor = document.querySelector('.modal-kino-wybor');
-window.onclick = function (event) {
-  if (event.target == modal_wybor) {
-    modal_wybor.style.display = "none";
-  }
-}
+// var modal_wybor = document.querySelector('.modal-kino-wybor');
+// window.onclick = function (event) {
+//   if (event.target == modal_wybor) {
+//     modal_wybor.style.display = "none";
+//   }
+// }
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -58,10 +60,7 @@ for (let j = 0; j < 10; j++) {
   element.appendChild(para_parent);
 }
 
-// function changeTextColor(el){
-// 	el.style.color = 'blue';
-//   console.log('test');
-// }
+
 var sum = 0;
 var elements = document.querySelectorAll('div span');
 elements.forEach(function (element) {
