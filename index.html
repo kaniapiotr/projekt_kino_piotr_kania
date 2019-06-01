@@ -32,7 +32,7 @@
                 <li><a href="rezerwacja.html"> REZERWACJA </a></li>
                 <!-- <li><a href=""> KONTAKT </a></li> -->
                 <li id="btn-kon"> KONTAKT</li>
-                <li id="btn-rej">REJESTRACJA</li>
+                <li id="btn-rej">ZALOGUJ SIĘ</li>
             </ul>
            
         </div>
@@ -138,13 +138,19 @@
                     <!-- <input type="email" id="email" name="email" placeholder="E-mail" title="podaj swój adres e-mail" required> -->
 
                     <div class="container-email">
-                        <input id="user-login" class="email" placeholder="email" />
+                        <input id="user-login" class="email" type="email" placeholder="email">
+
+                       
                         
                           <div class="update">Wpisz email</div>
                         </a>
                       </div>
 
-                    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title = "hasło musi składać się z minimum 8 znaków, hasło powinno zawierać zarówno małe jak i duże litery, hasło powinno zawierać przynajmniej jedną cyfrę" placeholder="Hasło" required>
+                    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  placeholder="Hasło">
+
+                    <!-- <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title = "hasło musi składać się z minimum 8 znaków, hasło powinno zawierać zarówno małe jak i duże litery, hasło powinno zawierać przynajmniej jedną cyfrę" placeholder="Hasło" required> -->
+
+                    
 
                     <div id="alert-haslo">
 
@@ -152,15 +158,20 @@
                         <p id="litera-duza" class="invalid"></p>
                         <p id="cyfra" class="invalid"></p>
                         <p id="liczba-znakow" class="invalid"></p>
-                        <p id="zalogowano" class="invalid"></p>
-
+                        
 
                     </div>
 
                     
                   
-                    <input id="btn-zal" class="btn-zal" type="submit" value="zaloguj" onclick="getInfo()"><br/> <br/>
+                    <input id="btn-zal" class="btn-zal" type="button" value="zaloguj" onclick="getInfo()"><br/>
                     <!-- <a  id="btn-zal" class="btn-zal" type="submit" value="submit">Zaloguj</a> <br/> <br/> -->
+
+                    <div id="alert-haslo">
+
+                       <p id="zalogowano" class="invalid"></p>
+
+                    </div>
                    
 
                     
@@ -186,27 +197,6 @@
 
 
 
-        
-
-
-
-
-
-        <!-- próbne logowanie -->
-
-
-        <!-- <form>
-            <input type="text" id="username" placeholder="Choose Username">
-            <input type="password" id="password" placeholer="Choose Password">
-            <button type="button" onclick="getInfo()">Click Me</button>
-        </form> -->
-
-
-
-
-
-
-
 
 
         <script src="script.js"></script>
@@ -221,33 +211,3 @@
 
 
 
-<!-- przykładowy modal -->
-
-
-<!-- <button onclick="document.getElementById('modal-wrapper').style.display='block'"
-            style="width:200px; margin-top:50px; margin-left:0px;">
-            Zaloguj się</button>
-
-        <div id="modal-wrapper" class="modal">
-
-            <form class="modal-content animate" action="/action_page.php">
-
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close"
-                        title="Close PopUp">&times;</span>
-                    <img src="1.png" alt="Avatar" class="avatar">
-                    <h1 style="text-align:center">Zaloguj się</h1>
-                </div>
-
-                <div class="container">
-                    <input type="text" placeholder="Login" name="uname">
-                    <input type="password" placeholder="Hasło" name="psw">
-                    <button type="submit">Login</button>
-                    <input type="checkbox" style="margin:26px 30px;"> Zapamiętaj login i hasło
-                    <a href="#" style="text-decoration:none; float:right; margin-right:34px; margin-top:26px;">Nie
-                        pamiętasz hasła? </a>
-                </div>
-
-            </form>
-
-        </div> -->
