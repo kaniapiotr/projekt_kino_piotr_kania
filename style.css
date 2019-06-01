@@ -347,10 +347,7 @@ button:hover {
     font-size: 42px;
     transform: rotate(45deg);
     cursor: pointer;
-
-
 }
-
 
 
 .ukryj{display: none}
@@ -376,23 +373,23 @@ input {
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
-  }
+}
   
-  /* Style the submit button */
-  input[type=submit] {
+/* Style the submit button */
+input[type=submit] {
     background-color: #4CAF50;
     color: white;
-  }
+}
   
-  /* Style the container for inputs */
-  .container {
+/* Style the container for inputs */
+.container {
     background-color: #f1f1f1;
     padding: 0px;
     font-family: "Roboto", sans-serif;
-  }
+}
   
-  /* The message box is shown when the user clicks on the password field */
-  #message {
+ /* The message box is shown when the user clicks on the password field */
+ #message {
     display:none;
     background: #f1f1f1;
     color: #000;
@@ -400,31 +397,31 @@ input {
     padding: 0px;
     margin-top: 0px;
     font-family: "Roboto", sans-serif;
-  }
+ }
 
-  #alert-haslo {
+ #alert-haslo {
       color: red;
       font-family: "Roboto", sans-serif;
       display: inline;
       font-size: 10px
-  }
+ }
   
-  #message p {
+ #message p {
     margin-top: 10px;
     padding: 10px 35px;
     font-size: 10px;
     font-family: "Roboto", sans-serif;
-  }
+ }
   
   /* Add a green text color and a checkmark when the requirements are right */
-  .valid {
+ .valid {
     display: none;
     color: green;
-  }
+ }
 
-  .valid_zal{
+ .valid_zal{
         color: green;
-  }
+ }
   
   /* .valid:before {
     position: relative;
@@ -433,17 +430,17 @@ input {
   } */
   
   /* Add a red text color and an "x" when the requirements are wrong */
-  .invalid {
+ .invalid {
     color: red;
-  }
+ }
   
-  .invalid:before {
+ .invalid:before {
     position: relative;
     left: -35px;
     /* content: "✖"; */
-  }
+ }
 
-  .div_wybor {
+.div_wybor {
       text-align: center;
       color: white;
       border: 1px solid white;
@@ -453,19 +450,19 @@ input {
       margin-bottom: 10px;
        
 
-  }
+}
 
-  .div1 {
+.div1 {
       margin-left: 10px;
       margin-right: 10px;
-  }
+}
 
-  footer{
+footer{
       display: flex;
       background-color: black;
       justify-content: center;
       align-items: center;
-      }
+}
 
      
   
