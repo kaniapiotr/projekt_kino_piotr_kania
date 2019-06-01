@@ -274,6 +274,7 @@ btnzal.onclick = function () {
     zalogowano.classList.remove("invalid");
     zalogowano.classList.add("valid_zal");
     document.getElementById("zalogowano").innerHTML = "Zalogowano";
+    document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
 
   }
   else {
