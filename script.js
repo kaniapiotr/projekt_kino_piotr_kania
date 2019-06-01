@@ -72,24 +72,7 @@ elements.forEach(function (element) {
 });;
 
 
-// proste logowanie ze sprawdzeniem zgodności
-
-var objPeople = [
-  { // Object @ 0 index
-    username: "sam",
-    password: "codify"
-  },
-  { // Object @ 1 index
-    username: "matt",
-    password: "academy"
-  },
-  { // Object @ 2 index
-    username: "chris",
-    password: "forever"
-  }
-
-]
-
+// 
 function getInfo() {
   var username = document.getElementById('user-login').value
   var password = document.getElementById('psw').value
@@ -166,6 +149,7 @@ var cyfra = document.getElementById("cyfra");
 var liczba_znakow = document.getElementById("liczba-znakow");
 var zalogowano = document.getElementById("zalogowano");
 // var email = document.getElementById("email");
+var e_mail = document.getElementById('user-login');
 
 
 
@@ -222,6 +206,9 @@ btnzal.onclick = function () {
   var lowerCaseLetters = /[a-z]/g;
   var numbers = /[0-9]/g;
   var upperCaseLetters = /[A-Z]/g;
+  var emailvalidate =  /(^\w.*@\w+\.\w)/g;
+
+
 
 
 
@@ -257,30 +244,58 @@ btnzal.onclick = function () {
     console.log("jest 8 znaków")
     document.getElementById("liczba-znakow").innerHTML = "";
 
-  } else {
+  }
+
+  else {
     console.log("hasło musi zawierać przynajmniej 8 znaków");
     document.getElementById("liczba-znakow").innerHTML = "hasło musi zawierać przynajmniej 8 znaków";
 
   }
 
+  if (e_mail.value.match(emailvalidate)) {
+    console.log("email poprawny")
+    //document.getElementById("liczba-znakow").innerHTML = "";
+
+  }
+
+  else {
+    console.log("email niepoprawny");
+    //document.getElementById("liczba-znakow").innerHTML = "hasło musi zawierać przynajmniej 8 znaków";
+
+  }
+
+
   var myObj = { email: document.getElementById("user-login"), password: document.getElementById("psw") };
   var myJSON = JSON.stringify(myObj);
 
-  if(myInput.value.match(lowerCaseLetters) && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) && (myInput.value.length >= 8) ) {
+  if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
     console.log("wszystkie warunki spełnione");
-    document.getElementById("zalogowano").innerHTML = "Zalogowano";
+
     zalogowano.classList.remove("invalid");
-    zalogowano.classList.add("valid");
+    zalogowano.classList.add("valid_zal");
+    document.getElementById("zalogowano").innerHTML = "Zalogowano";
 
   }
-}
+  else {
+    console.log("brakuje spełnienia któregoś z 4 warunków");
+  }
 
-  // if (a = 4){
+  // if(myInput.value.match(lowerCaseLetters) && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) && (myInput.value.length >= 8) ) {
   //   console.log("wszystkie warunki spełnione");
   //   document.getElementById("zalogowano").innerHTML = "Zalogowano";
   //   zalogowano.classList.remove("invalid");
   //   zalogowano.classList.add("valid");
+
   // }
+
+}
+
+// if (a = 4){
+//   console.log("wszystkie warunki spełnione");
+//   document.getElementById("zalogowano").innerHTML = "Zalogowano";
+//   zalogowano.classList.remove("invalid");
+//   zalogowano.classList.add("valid");
+// }
 
 
 
@@ -304,36 +319,36 @@ btnzal.onclick = function () {
 
 
 
-  // Grab the email input field and also the update div below it
-  // Why: to listen for changes in the input field, and show live updates in the update div!
-  const email = document.querySelector('.email');
-  const update = document.querySelector('.update');
+// Grab the email input field and also the update div below it
+// Why: to listen for changes in the input field, and show live updates in the update div!
+const email = document.querySelector('.email');
+const update = document.querySelector('.update');
 
-  // Listen to any change to the input we selected above
-  // Why: to validate the string as we type (on each keystroke)
-  email.addEventListener('input', inputEmail);
+// Listen to any change to the input we selected above
+// Why: to validate the string as we type (on each keystroke)
+email.addEventListener('input', inputEmail);
 
-  function inputEmail(e) {
-    const input = e.target.value;
-    // Check if the input is NOT blank first, and if it's not, make sure it matches our regex test
-    // Why: because we don't want to start validating before the user has started typing; after that it's fair game
-    if (input && /(^\w.*@\w+\.\w)/.test(input)) {
-      update.textContent = 'poprawny email!';
-      update.classList.add('success');
-      update.classList.remove('failure');
-    } else {
-      update.textContent = 'wpisuj dalej';
-      update.classList.remove('success');
-      update.classList.add('failure');
-    }
-  };
+function inputEmail(e) {
+  const input = e.target.value;
+  // Check if the input is NOT blank first, and if it's not, make sure it matches our regex test
+  // Why: because we don't want to start validating before the user has started typing; after that it's fair game
+  if (input && /(^\w.*@\w+\.\w)/.test(input)) {
+    update.textContent = 'poprawny email!';
+    update.classList.add('success');
+    update.classList.remove('failure');
+  } else {
+    update.textContent = 'wpisuj dalej';
+    update.classList.remove('success');
+    update.classList.add('failure');
+  }
+};
 
 
 
   // function getInfo() {
   //   var username = document.getElementById('username').value
   //   var password = document.getElementById('password').value
-  
+
   //   for (var i = 0; i < objPeople.length; i++) {
   //     // check is user input matches username and password of a current index of the objPeople array
   //     if (username == objPeople[i].username && password == objPeople[i].password) {
@@ -344,4 +359,22 @@ btnzal.onclick = function () {
   //   }
   //   console.log("incorrect username or password")
   // }
-  
+
+
+  // proste logowanie ze sprawdzeniem zgodności
+
+// var objPeople = [
+//   { // Object @ 0 index
+//     username: "sam",
+//     password: "codify"
+//   },
+//   { // Object @ 1 index
+//     username: "matt",
+//     password: "academy"
+//   },
+//   { // Object @ 2 index
+//     username: "chris",
+//     password: "forever"
+//   }
+
+// ]
