@@ -452,6 +452,10 @@ input {
     display: none;
     color: green;
   }
+
+  .valid_zal{
+        color: green;
+  }
   
   /* .valid:before {
     position: relative;
