@@ -1,8 +1,9 @@
-//logowanie - zzapisanie zmiennych
 
-var name222 = document.getElementById('user-login');
-var name1111 = "asd";
-console.log(name1111);
+
+//console.log(myemail[1].email);
+
+// var name1111 = "asd";
+// console.log(name1111);
 
 // modal rejestracji
 
@@ -14,7 +15,7 @@ document.querySelector('.close2').addEventListener('click', function () {
 document.getElementById('btn-rej').addEventListener('click', function () {
   document.querySelector('.modal-kino').style.display = 'flex';
 });
- 
+
 // zamknięcie modala przez kliknięcie obok
 
 var modal = document.querySelector('.modal-kino');
@@ -72,20 +73,7 @@ elements.forEach(function (element) {
 
 
 // 
-function getInfo() {
-  var username = document.getElementById('user-login').value
-  var password = document.getElementById('psw').value
 
-  for (var i = 0; i < objPeople.length; i++) {
-    // check is user input matches username and password of a current index of the objPeople array
-    if (username == objPeople[i].username && password == objPeople[i].password) {
-      console.log(username + " is logged in!!!")
-      // stop the function if this is found to be true
-      return
-    }
-  }
-  console.log("incorrect username or password")
-}
 
 
 // wyswietlenie wybranego kina
@@ -139,16 +127,14 @@ document.getElementById("wybor_film").addEventListener("change", function () {
 
 
 var myInput = document.getElementById("psw");
-
 var btnzal = document.getElementById("btn-zal");
-
 var litera = document.getElementById("litera");
 var litera_duza = document.getElementById("litera-duza");
 var cyfra = document.getElementById("cyfra");
 var liczba_znakow = document.getElementById("liczba-znakow");
 var zalogowano = document.getElementById("zalogowano");
-// var email = document.getElementById("email");
-var e_mail = document.getElementById('user-login');
+var e_mail = document.getElementById("user-login");
+//var in_email = document.getElementById("user-login");
 
 
 
@@ -156,7 +142,7 @@ var e_mail = document.getElementById('user-login');
 
 
 
-// When the user starts to type something inside the password field
+// walidacja hasła - wyświetlanie wskazówek pod oknem wpisywania
 myInput.onkeyup = function () {
   // Validate lowercase letters
   var lowerCaseLetters = /[a-z]/g;
@@ -200,14 +186,14 @@ myInput.onkeyup = function () {
 }
 
 
+
 btnzal.onclick = function () {
   // Validate lowercase letters
   var lowerCaseLetters = /[a-z]/g;
   var numbers = /[0-9]/g;
   var upperCaseLetters = /[A-Z]/g;
-  var emailvalidate =  /(^\w.*@\w+\.\w)/g;
-
-
+  var emailvalidate = /(^\w.*@\w+\.\w)/g;
+  
 
 
 
@@ -221,24 +207,31 @@ btnzal.onclick = function () {
     document.getElementById("litera").innerHTML = "hasło musi zawierać małe litery";
 
   }
+
   if (myInput.value.match(numbers)) {
     console.log("są cyfry")
     document.getElementById("cyfra").innerHTML = "";
 
-  } else {
+  } 
+  
+  else {
     console.log("hasło musi zawierać cyfry")
     document.getElementById("cyfra").innerHTML = "hasło musi zawierać cyfry";
 
   }
+
   if (myInput.value.match(upperCaseLetters)) {
     console.log("są duże litery")
     document.getElementById("litera-duza").innerHTML = "";
 
-  } else {
+  } 
+  
+  else {
     console.log("hasło musi zawierać duże litery")
     document.getElementById("litera-duza").innerHTML = "hasło musi zawierać duże litery";
 
   }
+
   if (myInput.value.length >= 8) {
     console.log("jest 8 znaków")
     document.getElementById("liczba-znakow").innerHTML = "";
@@ -252,20 +245,17 @@ btnzal.onclick = function () {
   }
 
   if (e_mail.value.match(emailvalidate)) {
-    console.log("email poprawny")
-    //document.getElementById("liczba-znakow").innerHTML = "";
+    console.log("składnia emaila poprawna")
 
   }
 
   else {
-    console.log("email niepoprawny");
-    //document.getElementById("liczba-znakow").innerHTML = "hasło musi zawierać przynajmniej 8 znaków";
+    console.log("składnia emaila niepoprawna");
 
   }
 
 
-  var myObj = { email: document.getElementById("user-login"), password: document.getElementById("psw") };
-  var myJSON = JSON.stringify(myObj);
+
 
   if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
     console.log("wszystkie warunki spełnione");
@@ -275,20 +265,40 @@ btnzal.onclick = function () {
     document.getElementById("zalogowano").innerHTML = "Zalogowano";
     document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
 
+
+    var myemail = JSON.parse(data_email);
+    var liczba = Object.keys(myemail).length;
+    var in_email = document.getElementById("user-login");
+    //var in_email = "dsa@asd.pl";
+    var found = false;
+    var numer;
+    function emailDbCheck() {
+      for (i = 0; i < liczba; i++) {
+        if (myemail[i].email == in_email) {
+          found = true;
+          numer = i;
+        }
+      }
+      console.log(i);
+      if (found) {
+        console.log("Znaleziono mail " + myemail[numer].email);
+      } else {
+        console.log("Nie znaleziono maila, mimo że powinien to być " + myemail[0].email + " lub " + myemail[1].email);
+      }
+    }
+
+    emailDbCheck();
   }
   else {
     console.log("brakuje spełnienia któregoś z 4 warunków");
   }
 
-  // if(myInput.value.match(lowerCaseLetters) && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) && (myInput.value.length >= 8) ) {
-  //   console.log("wszystkie warunki spełnione");
-  //   document.getElementById("zalogowano").innerHTML = "Zalogowano";
-  //   zalogowano.classList.remove("invalid");
-  //   zalogowano.classList.add("valid");
-
-  // }
-
 }
+
+
+// walidacja emaila i hasła, sprawdzenie z danymi JSONa
+
+
 
 // if (a = 4){
 //   console.log("wszystkie warunki spełnione");
@@ -321,12 +331,12 @@ btnzal.onclick = function () {
 
 // Grab the email input field and also the update div below it
 // Why: to listen for changes in the input field, and show live updates in the update div!
-const email = document.querySelector('.email');
+const email3 = document.querySelector('.email');
 const update = document.querySelector('.update');
 
 // Listen to any change to the input we selected above
 // Why: to validate the string as we type (on each keystroke)
-email.addEventListener('input', inputEmail);
+email3.addEventListener('input', inputEmail);
 
 function inputEmail(e) {
   const input = e.target.value;
@@ -378,3 +388,19 @@ function inputEmail(e) {
 //   }
 
 // ]
+
+
+// function getInfo() {
+//   var username = document.getElementById('user-login').value
+//   var password = document.getElementById('psw').value
+
+//   for (var i = 0; i < objPeople.length; i++) {
+//     // check is user input matches username and password of a current index of the objPeople array
+//     if (username == objPeople[i].username && password == objPeople[i].password) {
+//       console.log(username + " is logged in!!!")
+//       // stop the function if this is found to be true
+//       return
+//     }
+//   }
+//   console.log("incorrect username or password")
+// }
