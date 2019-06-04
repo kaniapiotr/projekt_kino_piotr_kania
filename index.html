@@ -94,12 +94,34 @@
 
 
                 </div>
+               
             </div>
 
 
 
 
         </div>
+
+        <div class="screen">
+                <div class="podsumowanie">
+                    
+                    <div> Podsumowanie: </div>
+
+                    <div id="kino_poznan2" class="ukryj">Wybrane kino: Poznań </div>
+
+                    <div id="kino_warszawa2" class="ukryj">Wybrane kino: Warszawa</div>
+
+                    <div id="kino_katowice2" class="ukryj">Wybrane kino: Katowice</div>
+                    
+                    <div id="id_to2" class="ukryj">Wybrany film: To </div>
+        
+                    <div id="id_cos2" class="ukryj">Wybrany film: Coś</div>
+        
+                    <div id="id_ai2" class="ukryj">Wybrany film: AI</div>
+
+                    
+                </div>
+            </div>
 
     </header>
     <footer>
@@ -180,6 +202,29 @@
                 </form>
             </div>
         </div>
+
+         <!-- modal alert wygaśnięcia sesji -->
+         <div class="modal-timeout">
+                <div id="modal-timeout-id" class="modal-timeout-content animate">
+    
+                    <div class="close2-timeout">+</div>
+                     <br/><br/>
+                    Twoja sesja wygaśnie za minutę.
+
+                    Kliknij poniższy przycisk jeśli chcesz przedłużyć sesję
+             
+                        <input id="btn-timeout" class="btn-timeout" type="button" value="Przedłuż sesję" onclick="mojaFunkcja()"><br/>
+                        
+    
+                        <div id="alert-haslo">
+    
+                           <p id="zalogowano" class="invalid"></p>
+    
+                        </div>
+                                      
+                    </form>
+                </div>
+            </div>
 
 
 
