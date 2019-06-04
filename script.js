@@ -108,8 +108,18 @@ var sum = 0;
 var elements = document.querySelectorAll('div span');
 elements.forEach(function (element) {
   element.addEventListener('click', function () {
-    if (element.style.color == 'green') { element.style.color = 'white'; sum = sum - 15; document.getElementById("cena").innerHTML = sum }
-    else { element.style.color = 'green'; sum = sum + 15; document.getElementById("cena").innerHTML = sum; }
+    if (element.style.color == 'green') {
+      element.style.color = 'white'; sum = sum - 15;
+      document.getElementById("cena").innerHTML = sum + " ZŁ";
+      document.getElementById("cena2").innerHTML = "Wartość zamówienia: " + sum + " ZŁ";
+      document.getElementById("cena2").classList.remove("ukryj");
+    }
+    else {
+      element.style.color = 'green'; sum = sum + 15;
+      document.getElementById("cena").innerHTML = sum + "ZŁ";
+      document.getElementById("cena2").innerHTML = "Wartość zamówienia: " + sum + " ZŁ"
+      document.getElementById("cena2").classList.remove("ukryj");
+    }
   });
 });;
 
@@ -145,7 +155,7 @@ document.getElementById("wybor_film").addEventListener("change", function () {
     document.getElementById("id_to").classList.remove("ukryj");
     document.getElementById("id_cos").classList.add("ukryj")
     document.getElementById("id_ai").classList.add("ukryj")
-   }
+  }
   if (selValue == "cos") {
     document.getElementById("id_cos").classList.remove("ukryj");
     document.getElementById("id_to").classList.add("ukryj")
