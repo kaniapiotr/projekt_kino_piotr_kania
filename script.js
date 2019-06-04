@@ -1,9 +1,51 @@
+// funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
+
+setTimeout(sessionAlert, 10000);
+function sessionAlert() {
+  //alert('Twoja sesja wygaśnie za minutę ');
+  document.querySelector('.modal-timeout').style.display = 'flex';
+}
+
+// odświeżenie strony w przypadku niekliknięcia przycisku
+
+myvar = setTimeout(sessionReload, 20000);
+function sessionReload() {
+  location.reload();
+}
+
+// funkcja przycisku przedłużenia sesji
+
+btn_timeout = document.getElementById("btn-timeout");
+btn_timeout.onclick = function () {
+  clearTimeout(myvar);
+  document.getElementById("btn-timeout").value = 'Przedłużono sesję';
+  console.log("W rzeczywistości czas sesji jest od teraz nieograniczony");
+}
+
+// przycisk wyłączenia modala z alertem o czasie sesji
+
+document.querySelector('.close2-timeout').addEventListener('click', function () {
+  document.querySelector('.modal-timeout').style.display = 'none';
+
+});
+
+
+
+var myemail = JSON.parse(data_email);
+var liczba = Object.keys(myemail).length;
+console.log(liczba);
+console.log(myemail[0].email);
+console.log(myemail[1].email);
+
 
 
 //console.log(myemail[1].email);
 
 // var name1111 = "asd";
 // console.log(name1111);
+
+
+
 
 // modal rejestracji
 
@@ -66,14 +108,10 @@ var sum = 0;
 var elements = document.querySelectorAll('div span');
 elements.forEach(function (element) {
   element.addEventListener('click', function () {
-    if (element.style.color == 'green') { element.style.color = 'black'; sum = sum - 15; document.getElementById("cena").innerHTML = sum }
+    if (element.style.color == 'green') { element.style.color = 'white'; sum = sum - 15; document.getElementById("cena").innerHTML = sum }
     else { element.style.color = 'green'; sum = sum + 15; document.getElementById("cena").innerHTML = sum; }
   });
 });;
-
-
-// 
-
 
 
 // wyswietlenie wybranego kina
@@ -107,7 +145,7 @@ document.getElementById("wybor_film").addEventListener("change", function () {
     document.getElementById("id_to").classList.remove("ukryj");
     document.getElementById("id_cos").classList.add("ukryj")
     document.getElementById("id_ai").classList.add("ukryj")
-  }
+   }
   if (selValue == "cos") {
     document.getElementById("id_cos").classList.remove("ukryj");
     document.getElementById("id_to").classList.add("ukryj")
@@ -117,6 +155,48 @@ document.getElementById("wybor_film").addEventListener("change", function () {
     document.getElementById("id_ai").classList.remove("ukryj");
     document.getElementById("id_cos").classList.add("ukryj")
     document.getElementById("id_to").classList.add("ukryj")
+  }
+})
+
+document.getElementById("wybor").addEventListener("change", function () {
+  var selObj = document.getElementById("wybor");
+  var selValue = selObj.options[selObj.selectedIndex].value;
+
+  if (selValue == "poznan") {
+    document.getElementById("kino_poznan2").classList.remove("ukryj");
+    document.getElementById("kino_warszawa2").classList.add("ukryj")
+    document.getElementById("kino_katowice2").classList.add("ukryj")
+  }
+  if (selValue == "warszawa") {
+    document.getElementById("kino_warszawa2").classList.remove("ukryj");
+    document.getElementById("kino_poznan2").classList.add("ukryj")
+    document.getElementById("kino_katowice2").classList.add("ukryj")
+  }
+  if (selValue == "katowice") {
+    document.getElementById("kino_katowice2").classList.remove("ukryj");
+    document.getElementById("kino_poznan2").classList.add("ukryj")
+    document.getElementById("kino_warszawa2").classList.add("ukryj")
+  }
+})
+
+document.getElementById("wybor_film").addEventListener("change", function () {
+  var selObj = document.getElementById("wybor_film");
+  var selValue = selObj.options[selObj.selectedIndex].value;
+
+  if (selValue == "to") {
+    document.getElementById("id_to2").classList.remove("ukryj");
+    document.getElementById("id_cos2").classList.add("ukryj")
+    document.getElementById("id_ai2").classList.add("ukryj")
+  }
+  if (selValue == "cos") {
+    document.getElementById("id_cos2").classList.remove("ukryj");
+    document.getElementById("id_to2").classList.add("ukryj")
+    document.getElementById("id_ai2").classList.add("ukryj")
+  }
+  if (selValue == "ai") {
+    document.getElementById("id_ai2").classList.remove("ukryj");
+    document.getElementById("id_cos2").classList.add("ukryj")
+    document.getElementById("id_to2").classList.add("ukryj")
   }
 })
 
@@ -136,10 +216,8 @@ var zalogowano = document.getElementById("zalogowano");
 var e_mail = document.getElementById("user-login");
 //var in_email = document.getElementById("user-login");
 
-
-
-
-
+//console.log(in_email);
+//var in_email = document.getElementById("user-login");
 
 
 // walidacja hasła - wyświetlanie wskazówek pod oknem wpisywania
@@ -193,7 +271,10 @@ btnzal.onclick = function () {
   var numbers = /[0-9]/g;
   var upperCaseLetters = /[A-Z]/g;
   var emailvalidate = /(^\w.*@\w+\.\w)/g;
-  
+  var in_email = document.querySelector(".email");
+  console.log(in_email);
+
+
 
 
 
@@ -212,8 +293,8 @@ btnzal.onclick = function () {
     console.log("są cyfry")
     document.getElementById("cyfra").innerHTML = "";
 
-  } 
-  
+  }
+
   else {
     console.log("hasło musi zawierać cyfry")
     document.getElementById("cyfra").innerHTML = "hasło musi zawierać cyfry";
@@ -224,8 +305,8 @@ btnzal.onclick = function () {
     console.log("są duże litery")
     document.getElementById("litera-duza").innerHTML = "";
 
-  } 
-  
+  }
+
   else {
     console.log("hasło musi zawierać duże litery")
     document.getElementById("litera-duza").innerHTML = "hasło musi zawierać duże litery";
@@ -266,12 +347,12 @@ btnzal.onclick = function () {
     document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
 
 
-    var myemail = JSON.parse(data_email);
-    var liczba = Object.keys(myemail).length;
-    var in_email = document.getElementById("user-login");
+
+    //var in_email = document.getElementById("user-login");
     //var in_email = "dsa@asd.pl";
     var found = false;
-    var numer;
+    var numer = 0;
+    console.log(liczba);
     function emailDbCheck() {
       for (i = 0; i < liczba; i++) {
         if (myemail[i].email == in_email) {
@@ -283,6 +364,7 @@ btnzal.onclick = function () {
       if (found) {
         console.log("Znaleziono mail " + myemail[numer].email);
       } else {
+        console.log(in_email);
         console.log("Nie znaleziono maila, mimo że powinien to być " + myemail[0].email + " lub " + myemail[1].email);
       }
     }
@@ -333,12 +415,14 @@ btnzal.onclick = function () {
 // Why: to listen for changes in the input field, and show live updates in the update div!
 const email3 = document.querySelector('.email');
 const update = document.querySelector('.update');
+console.log(email3);
 
 // Listen to any change to the input we selected above
 // Why: to validate the string as we type (on each keystroke)
 email3.addEventListener('input', inputEmail);
 
 function inputEmail(e) {
+  console.log(email3);
   const input = e.target.value;
   // Check if the input is NOT blank first, and if it's not, make sure it matches our regex test
   // Why: because we don't want to start validating before the user has started typing; after that it's fair game
@@ -352,6 +436,25 @@ function inputEmail(e) {
     update.classList.add('failure');
   }
 };
+
+
+
+//myFunction(3000);
+
+
+
+
+// var startTime = new Date(getMilliseconds),
+//     timeoutLength = 60000;
+
+// var interval = setInterval("checkTimeout()",1000);
+// function checkTimeout() {
+//     var currentTime = new Date(millisecond);
+//     if (currentTime > startTime + timeoutLength) {
+//         clearInterval(interval);
+//         alert ("Your current Session is over due to inactivity.");
+//     }
+// }
 
 
 
