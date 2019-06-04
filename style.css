@@ -1,6 +1,7 @@
 
 body
 {
+    
     text-align: center; width: 100vw;
 }
 *
@@ -23,6 +24,8 @@ header
     float: right;
     list-style: none;
     margin-top: 30px;
+    margin-right: 20px;
+
 }
 
 .main-nav li
@@ -84,6 +87,8 @@ header
     width: 150px;
     height: auto;
     float: left;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 body
@@ -93,14 +98,15 @@ body
 
 .row
 {
-    max-width: 1200px;
+    max-width: 95vw;
+   
     margin: auto;
 }
 
 .kino
 {
     position: absolute;
-    width: 1200px;
+    width: 95vw;
     margin-left: 0px;
     margin-top: 100px;
     margin-right: 0px;
@@ -152,7 +158,24 @@ h1
 }
 
 div span {
+    display: inline-block;
     color: ;
+    height: 20px;
+    width: 50px;
+    margin: 2px, 2px, 2px, 2px;
+    padding: 2px, 2px, 2px, 2px;
+    border: solid white 1px;
+    /* border-style: hidden; */
+    border-color: rgba(0,0,0,1)
+   
+}
+
+div span:hover {
+       
+    border: solid white 1px;
+    border-style: inset;
+    background-color: rgb(105, 105, 105);
+    transition: 0.3s ease-in-out;
 }
 
 Full-width input fields
@@ -294,6 +317,62 @@ button:hover {
 
 }
 
+/* modal timeout */
+
+.modal-timeout {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-timeout-content{    
+    width: 300px;
+    height: 130px;
+    background-color: white;
+    opacity: 1;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+
+}
+
+
+.btn-timeout {
+	background-color: rgb(78, 78, 255);
+	border: 2px solid black;
+	border-radius: 30px;
+	text-decoration: none;
+	padding: 10px 28px;
+	color: white;
+	margin-top: 10px;
+	display: inline-block;
+    }
+    
+.btn-timeout:hover {
+		background-color: white;
+		color: blue;
+		border: 2px solid blue;
+	}
+
+
+.close2 {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+
+}
+
 /* ////////////////////////////////// modal wybor kina */
 
 .modal-kino-wybor {
@@ -340,7 +419,7 @@ button:hover {
 
 
 
-.close2-wybor {
+.close2-timeout {
     position: absolute;
     top: 0;
     right: 14px;
@@ -359,6 +438,32 @@ button:hover {
 
 .wybrane-kino{
     color:white;
+}
+
+.screen{
+       
+}
+
+.podsumowanie {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    align-content: space-between;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    width: 30vh;
+    height: 25vh;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 0.2vh solid white;
+    font-size: 1.8vh;
+
+}
+
+.podsumowanie div{
+    /* margin-top: 2vh; */
 }
 /* ///////////////////////////////////////////////////////////////////////// */
 /* ////////////// style dla formularza email i hasła */
