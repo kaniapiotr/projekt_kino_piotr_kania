@@ -37,16 +37,6 @@ console.log(liczba);
 console.log(myemail[0].email);
 console.log(myemail[1].email);
 
-
-
-//console.log(myemail[1].email);
-
-// var name1111 = "asd";
-// console.log(name1111);
-
-
-
-
 // modal rejestracji
 
 document.querySelector('.close2').addEventListener('click', function () {
@@ -349,21 +339,12 @@ btnzal.onclick = function () {
 
 
   if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
-    console.log("wszystkie warunki spełnione");
-
-    zalogowano.classList.remove("invalid");
-    zalogowano.classList.add("valid_zal");
-    document.getElementById("zalogowano").innerHTML = "Zalogowano";
-    document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
-
-
-
-    //var in_email = document.getElementById("user-login");
-    //var in_email = "dsa@asd.pl";
+    
+    var in_email = document.getElementById("user-login").value;
+    var in_email = in_email.toLowerCase();
     var found = false;
     var numer = 0;
-    console.log(liczba);
-    function emailDbCheck() {
+        function emailDbCheck() {
       for (i = 0; i < liczba; i++) {
         if (myemail[i].email == in_email) {
           found = true;
@@ -373,9 +354,15 @@ btnzal.onclick = function () {
       console.log(i);
       if (found) {
         console.log("Znaleziono mail " + myemail[numer].email);
+        console.log("wszystkie warunki hasła spełnione");
+        zalogowano.classList.remove("invalid");
+        zalogowano.classList.add("valid_zal");
+        document.getElementById("zalogowano").innerHTML = "Zalogowano";
+        document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
       } else {
         console.log(in_email);
         console.log("Nie znaleziono maila, mimo że powinien to być " + myemail[0].email + " lub " + myemail[1].email);
+        document.getElementById("zalogowano").innerHTML = "Nie znaleziono adresu email w bazie danych";
       }
     }
 
