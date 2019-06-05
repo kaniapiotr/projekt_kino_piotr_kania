@@ -1,41 +1,37 @@
-// funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
+// // funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
 
-setTimeout(sessionAlert, 10000);
-function sessionAlert() {
-  //alert('Twoja sesja wygaśnie za minutę ');
-  document.querySelector('.modal-timeout').style.display = 'flex';
-}
+// setTimeout(sessionAlert, 10000);
+// function sessionAlert() {
+//   //alert('Twoja sesja wygaśnie za minutę ');
+//   document.querySelector('.modal-timeout').style.display = 'flex';
+// }
 
-// odświeżenie strony w przypadku niekliknięcia przycisku
+// // odświeżenie strony w przypadku niekliknięcia przycisku
 
-myvar = setTimeout(sessionReload, 20000);
-function sessionReload() {
-  location.reload();
-}
+// myvar = setTimeout(sessionReload, 20000);
+// function sessionReload() {
+//   location.reload();
+// }
 
-// funkcja przycisku przedłużenia sesji
+// // funkcja przycisku przedłużenia sesji
 
-btn_timeout = document.getElementById("btn-timeout");
-btn_timeout.onclick = function () {
-  clearTimeout(myvar);
-  document.getElementById("btn-timeout").value = 'Przedłużono sesję';
-  console.log("W rzeczywistości czas sesji jest od teraz nieograniczony");
-}
+// btn_timeout = document.getElementById("btn-timeout");
+// btn_timeout.onclick = function () {
+//   clearTimeout(myvar);
+//   document.getElementById("btn-timeout").value = 'Przedłużono sesję';
+//   console.log("W rzeczywistości czas sesji jest od teraz nieograniczony");
+// }
 
-// przycisk wyłączenia modala z alertem o czasie sesji
+// // przycisk wyłączenia modala z alertem o czasie sesji
 
-document.querySelector('.close2-timeout').addEventListener('click', function () {
-  document.querySelector('.modal-timeout').style.display = 'none';
+// document.querySelector('.close2-timeout').addEventListener('click', function () {
+//   document.querySelector('.modal-timeout').style.display = 'none';
 
-});
+// });
 
 
+//powyżej odkomentwać wszystko
 
-var myemail = JSON.parse(data_email);
-var liczba = Object.keys(myemail).length;
-console.log(liczba);
-console.log(myemail[0].email);
-console.log(myemail[1].email);
 
 // modal rejestracji
 
@@ -214,10 +210,10 @@ var cyfra = document.getElementById("cyfra");
 var liczba_znakow = document.getElementById("liczba-znakow");
 var zalogowano = document.getElementById("zalogowano");
 var e_mail = document.getElementById("user-login");
-//var in_email = document.getElementById("user-login");
 
-//console.log(in_email);
-//var in_email = document.getElementById("user-login");
+var myUser = JSON.parse(data_email);
+var liczba = Object.keys(myUser).length;
+
 
 
 // walidacja hasła - wyświetlanie wskazówek pod oknem wpisywania
@@ -272,7 +268,6 @@ btnzal.onclick = function () {
   var upperCaseLetters = /[A-Z]/g;
   var emailvalidate = /(^\w.*@\w+\.\w)/g;
   var in_email = document.querySelector(".email");
-  console.log(in_email);
 
 
 
@@ -335,38 +330,106 @@ btnzal.onclick = function () {
 
   }
 
+  ///////////////////////////////////////////////////////////////////////
+  // funkcja sprawdzająca czy hasło istnieje w bazie danych
+  function passwordCheck() {
+    var numerr = 0
+    var found_password = false;
+    var userPassword = document.getElementById("psw").value;
+    for (i = 0; i < liczba; i++) {
+      if (myUser[i].password == userPassword) {
+        found_password = true;
+        numerr = i;
+      }
+    }
+    console.log(i);
+    if (found_password) {
+      console.log("Znaleziono hasło " + myUser[numerr].password);
+      
+    } else 
+    {
+      console.log("Nie znaleziono hasła");
+      document.getElementById("zalogowano").innerHTML = "Hasło jest niepoprawne ";
+    }
+  }
 
-
-
-  if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
-    
+  function emailAndPassword() {
+    var myemail = JSON.parse(data_email);
     var in_email = document.getElementById("user-login").value;
     var in_email = in_email.toLowerCase();
-    var found = false;
-    var numer = 0;
-        function emailDbCheck() {
-      for (i = 0; i < liczba; i++) {
-        if (myemail[i].email == in_email) {
-          found = true;
-          numer = i;
-        }
-      }
-      console.log(i);
-      if (found) {
-        console.log("Znaleziono mail " + myemail[numer].email);
-        console.log("wszystkie warunki hasła spełnione");
-        zalogowano.classList.remove("invalid");
-        zalogowano.classList.add("valid_zal");
-        document.getElementById("zalogowano").innerHTML = "Zalogowano";
-        document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
-      } else {
-        console.log(in_email);
-        console.log("Nie znaleziono maila, mimo że powinien to być " + myemail[0].email + " lub " + myemail[1].email);
-        document.getElementById("zalogowano").innerHTML = "Nie znaleziono adresu email w bazie danych";
+    var userPassword = document.getElementById("psw").value;
+    console.log(in_email);
+    console.log(userPassword);
+    liczba = Object.keys(myemail).length;
+    emailPassMatch = false;
+
+    for (i = 0; i < liczba; i++) {
+      if (myUser[i].email == in_email && myUser[i].password == userPassword) {
+
+        emailPassMatch = true;
       }
     }
 
+    if (emailPassMatch) {
+      console.log("email i hasło pasują");
+      zalogowano.classList.remove("invalid");
+      zalogowano.classList.add("valid_zal");
+      document.getElementById("zalogowano").style.color = 'green';
+      document.getElementById("zalogowano").innerHTML = " Zalogowano ";
+      
+      document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
+      //document.getElementById("zalogowano").innerHTML = "Zalogowano";
+    }
+
+    else {
+      console.log("mail i hasło nie pasują");
+      document.getElementById("zalogowano").style.color = 'red';
+      document.getElementById("zalogowano").innerHTML = "Hasło jest niepoprawne";
+    }
+  }
+
+
+
+  ///////////////////////////////////////////////////////////////////////
+  // funkcja sprawdzająca czy email  istnieje w bazie danych
+  function emailDbCheck() {
+    var in_email = document.getElementById("user-login").value;
+    var in_email = in_email.toLowerCase();
+    var found_email = false;
+    var numer = 0;
+
+    for (i = 0; i < liczba; i++) {
+      if (myUser[i].email == in_email) {
+        found_email = true;
+        numer = i;
+      }
+    }
+    console.log(i);
+    if (found_email) {
+      console.log("Znaleziono mail " + myUser[numer].email);
+      emailAndPassword();
+
+    } 
+    else {
+      console.log(in_email);
+      console.log("nie znaleziono adresu email w bazie danych")
+      console.log("Wpisany adres email nie istnieje w bazie użytkowników.");
+      document.getElementById("zalogowano").style.color = 'red';
+      document.getElementById("zalogowano").innerHTML = "Wpisany adres email nie istnieje w bazie użytkowników";
+      
+    }
+  }
+
+  
+
+  if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
+
+    console.log("Wszystkie warunki składni hasła spełnione. Czas na sprawdzenie, czy mail i hasło istnieją w bazie");
+
     emailDbCheck();
+    passwordCheck();
+    //emailAndPassword();
+
   }
   else {
     console.log("brakuje spełnienia któregoś z 4 warunków");
