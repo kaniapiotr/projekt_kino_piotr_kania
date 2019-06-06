@@ -55,13 +55,34 @@ window.onclick = function (event) {
 
 // modal wyboru kina
 
-document.querySelector('.close2-wybor').addEventListener('click', function () {
+document.querySelector('.close2-wybor-kina').addEventListener('click', function () {
   document.querySelector('.modal-kino-wybor').style.display = 'none';
-
 });
 
-document.getElementById('btn-kon').addEventListener('click', function () {
+document.getElementById('btn-wybor-kina').addEventListener('click', function () {
   document.querySelector('.modal-kino-wybor').style.display = 'flex';
+});
+
+// modal wyboru filmu
+
+document.querySelector('.close2-wybor-film').addEventListener('click', function () {
+  document.querySelector('.modal-film-wybor').style.display = 'none';
+});
+
+document.getElementById('btn-wyborfilm').addEventListener('click', function () {
+  console.log("kliknieto  w wybor filmu")
+  document.querySelector('.modal-film-wybor').style.display = 'flex';
+});
+
+// modal wyboru miejsca
+
+document.querySelector('.close2-wybor-miejsce').addEventListener('click', function () {
+  document.querySelector('.modal-miejsce-wybor').style.display = 'none';
+});
+
+document.getElementById('btn-wybor-miejsce').addEventListener('click', function () {
+  console.log("kliknieto  w wybor filmu")
+  document.querySelector('.modal-miejsce-wybor').style.display = 'flex';
 });
 
 // zamknięcie modala przez kliknięcie obok - jeśli się go włączy to modal logowania nie wyłącza się w ten sposób
