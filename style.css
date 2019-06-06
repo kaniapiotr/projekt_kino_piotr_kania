@@ -309,8 +309,6 @@ button:hover {
     font-size: 42px;
     transform: rotate(45deg);
     cursor: pointer;
-
-
 }
 
 /* modal timeout */
@@ -383,10 +381,13 @@ button:hover {
     display: none;
 }
 
-.modal-kino-content-wybor{
+.modal-kino-wybor-content{
+    margin-top: 200px;
     width: 300px;
-    height: 300px;
-    background-color: white;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    color: white;
     opacity: 1;
     border-radius: 4px;
     text-align: center;
@@ -395,27 +396,7 @@ button:hover {
 
 }
 
-.btn-zal-wybor {
-	background-color: rgb(78, 78, 255);
-	border: 2px solid black;
-	border-radius: 30px;
-	text-decoration: none;
-	padding: 10px 28px;
-	color: white;
-	margin-top: 10px;
-	display: inline-block;
-    }
-    
-.btn-zal-wybor:hover {
-		background-color: white;
-		color: blue;
-		border: 2px solid blue;
-    }
-    
-
-
-
-.close2-timeout {
+.close2-wybor-kina {
     position: absolute;
     top: 0;
     right: 14px;
@@ -423,6 +404,122 @@ button:hover {
     transform: rotate(45deg);
     cursor: pointer;
 }
+
+.wybor-kina {
+    margin-top: 3px;
+}
+
+/* koniec modala wyboru kina */
+
+
+
+/* ////////////////////////////////// modal wybor filmu */
+
+.modal-film-wybor {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-film-wybor-content{
+    margin-top: 200px;
+    width: 300px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    color: white;
+    opacity: 1;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+
+}
+
+.close2-wybor-film {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.wybor-film {
+    margin-top: 3px;
+}
+
+
+
+/* koniec modala wyboru filmu */
+
+/* ////////////////////////////////// modal wybor miejsce */
+
+.modal-miejsce-wybor {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-miejsce-wybor-content{
+    margin-top: 200px;
+    min-width: 550px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    color: white;
+    opacity: 1;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+
+}
+
+.close2-wybor-miejsce {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.wybor-film {
+    margin-top: 3px;
+}
+
+.div_wybor {
+    text-align: center;
+    color: white;
+    /* border: 1px solid white; */
+    max-width: 45vw;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+     
+
+}
+
+.div1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 40px;
+}
+
+/* koniec modala wyboru miejsce */
 
 
 .ukryj{display: none}
@@ -458,11 +555,7 @@ button:hover {
 
 }
 
-.podsumowanie div{
-    /* margin-top: 2vh; */
-}
-/* ///////////////////////////////////////////////////////////////////////// */
-/* ////////////// style dla formularza email i hasła */
+
 
 
 /* Style all input fields */
@@ -544,22 +637,7 @@ input[type=submit] {
     /* content: "✖"; */
  }
 
-.div_wybor {
-      text-align: center;
-      color: white;
-      border: 1px solid white;
-      max-width: 45vw;
-      height: auto;
-      margin-top: 10px;
-      margin-bottom: 10px;
-       
 
-}
-
-.div1 {
-      margin-left: 10px;
-      margin-right: 10px;
-}
 
 footer{
       display: flex;
