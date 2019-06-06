@@ -356,7 +356,7 @@ button:hover {
 	}
 
 
-.close2 {
+.close2-timeout {
     position: absolute;
     top: 0;
     right: 14px;
@@ -382,7 +382,7 @@ button:hover {
 }
 
 .modal-kino-wybor-content{
-    margin-top: 200px;
+    margin-top: 150px;
     width: 300px;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -428,7 +428,7 @@ button:hover {
 }
 
 .modal-film-wybor-content{
-    margin-top: 200px;
+    margin-top: 150px;
     width: 300px;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -474,9 +474,9 @@ button:hover {
 }
 
 .modal-miejsce-wybor-content{
-    margin-top: 200px;
+    margin-top: 150px;
     min-width: 550px;
-    height: 300px;
+    height: 280px;
     background-color: rgba(0, 0, 0, 0.8);
     border: 1px solid white;
     color: white;
@@ -516,7 +516,7 @@ button:hover {
 .div1 {
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 /* koniec modala wyboru miejsce */
@@ -619,13 +619,7 @@ input[type=submit] {
  .valid_zal{
         color: green;
  }
-  
-  /* .valid:before {
-    position: relative;
-    left: -35px;
-    content: "✔";
-  } */
-  
+
   /* Add a red text color and an "x" when the requirements are wrong */
  .invalid {
     color: red;
