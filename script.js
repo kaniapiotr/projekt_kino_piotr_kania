@@ -1,33 +1,33 @@
-// // funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
+// funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
 
-// setTimeout(sessionAlert, 10000);
-// function sessionAlert() {
-//   //alert('Twoja sesja wygaśnie za minutę ');
-//   document.querySelector('.modal-timeout').style.display = 'flex';
-// }
+setTimeout(sessionAlert, 10000);
+function sessionAlert() {
+  //alert('Twoja sesja wygaśnie za minutę ');
+  document.querySelector('.modal-timeout').style.display = 'flex';
+}
 
-// // odświeżenie strony w przypadku niekliknięcia przycisku
+// odświeżenie strony w przypadku niekliknięcia przycisku
 
-// myvar = setTimeout(sessionReload, 20000);
-// function sessionReload() {
-//   location.reload();
-// }
+myvar = setTimeout(sessionReload, 20000);
+function sessionReload() {
+  location.reload();
+}
 
-// // funkcja przycisku przedłużenia sesji
+// funkcja przycisku przedłużenia sesji
 
-// btn_timeout = document.getElementById("btn-timeout");
-// btn_timeout.onclick = function () {
-//   clearTimeout(myvar);
-//   document.getElementById("btn-timeout").value = 'Przedłużono sesję';
-//   console.log("W rzeczywistości czas sesji jest od teraz nieograniczony");
-// }
+btn_timeout = document.getElementById("btn-timeout");
+btn_timeout.onclick = function () {
+  clearTimeout(myvar);
+  document.getElementById("btn-timeout").value = 'Przedłużono sesję';
+  console.log("W rzeczywistości czas sesji jest od teraz nieograniczony");
+}
 
-// // przycisk wyłączenia modala z alertem o czasie sesji
+// przycisk wyłączenia modala z alertem o czasie sesji
 
-// document.querySelector('.close2-timeout').addEventListener('click', function () {
-//   document.querySelector('.modal-timeout').style.display = 'none';
+document.querySelector('.close2-timeout').addEventListener('click', function () {
+  document.querySelector('.modal-timeout').style.display = 'none';
 
-// });
+});
 
 
 //powyżej odkomentwać wszystko
@@ -459,39 +459,6 @@ btnzal.onclick = function () {
 }
 
 
-// walidacja emaila i hasła, sprawdzenie z danymi JSONa
-
-
-
-// if (a = 4){
-//   console.log("wszystkie warunki spełnione");
-//   document.getElementById("zalogowano").innerHTML = "Zalogowano";
-//   zalogowano.classList.remove("invalid");
-//   zalogowano.classList.add("valid");
-// }
-
-
-
-// btnzal.onclick = function () {
-//   var a = 0;
-//   var lowerCaseLetters = /[a-z]/g;
-//   var numbers = /[0-9]/g;
-//   var upperCaseLetters = /[A-Z]/g;
-//   if (myInput.value.match(lowerCaseLetters) && myInput.value.match(numbers) && myInput.value.match(upperCaseLetters) && myInput.value.length >= 8) {
-//     console.log("wszystkie warunki spełnione");
-//     document.getElementById("zalogowano").innerHTML = "Zalogowano";
-//     zalogowano.classList.remove("invalid");
-//     zalogowano.classList.add("valid");
-//     var a = 1;
-
-//   }
-//   else {
-//     console.log("nie wszystkie warunki spełnione");
-//   }
-// }
-
-
-
 // Grab the email input field and also the update div below it
 // Why: to listen for changes in the input field, and show live updates in the update div!
 const email3 = document.querySelector('.email');
@@ -517,74 +484,3 @@ function inputEmail(e) {
     update.classList.add('failure');
   }
 };
-
-
-
-//myFunction(3000);
-
-
-
-
-// var startTime = new Date(getMilliseconds),
-//     timeoutLength = 60000;
-
-// var interval = setInterval("checkTimeout()",1000);
-// function checkTimeout() {
-//     var currentTime = new Date(millisecond);
-//     if (currentTime > startTime + timeoutLength) {
-//         clearInterval(interval);
-//         alert ("Your current Session is over due to inactivity.");
-//     }
-// }
-
-
-
-  // function getInfo() {
-  //   var username = document.getElementById('username').value
-  //   var password = document.getElementById('password').value
-
-  //   for (var i = 0; i < objPeople.length; i++) {
-  //     // check is user input matches username and password of a current index of the objPeople array
-  //     if (username == objPeople[i].username && password == objPeople[i].password) {
-  //       console.log(username + " is logged in!!!")
-  //       // stop the function if this is found to be true
-  //       return
-  //     }
-  //   }
-  //   console.log("incorrect username or password")
-  // }
-
-
-  // proste logowanie ze sprawdzeniem zgodności
-
-// var objPeople = [
-//   { // Object @ 0 index
-//     username: "sam",
-//     password: "codify"
-//   },
-//   { // Object @ 1 index
-//     username: "matt",
-//     password: "academy"
-//   },
-//   { // Object @ 2 index
-//     username: "chris",
-//     password: "forever"
-//   }
-
-// ]
-
-
-// function getInfo() {
-//   var username = document.getElementById('user-login').value
-//   var password = document.getElementById('psw').value
-
-//   for (var i = 0; i < objPeople.length; i++) {
-//     // check is user input matches username and password of a current index of the objPeople array
-//     if (username == objPeople[i].username && password == objPeople[i].password) {
-//       console.log(username + " is logged in!!!")
-//       // stop the function if this is found to be true
-//       return
-//     }
-//   }
-//   console.log("incorrect username or password")
-// }
