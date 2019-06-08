@@ -265,6 +265,7 @@ myInput.onkeyup = function () {
     cyfra.classList.remove("invalid");
     cyfra.classList.add("valid");
   } else {
+    
     cyfra.classList.remove("valid");
     cyfra.classList.add("invalid");
   }
