@@ -1,6 +1,6 @@
 // funkcja ostrzeżenia o wygaśnięciu sesji (pojawienie się modala)
 
-setTimeout(sessionAlert, 10000);
+setTimeout(sessionAlert, 100000);
 function sessionAlert() {
   //alert('Twoja sesja wygaśnie za minutę ');
   document.querySelector('.modal-timeout').style.display = 'flex';
@@ -8,7 +8,7 @@ function sessionAlert() {
 
 // odświeżenie strony w przypadku niekliknięcia przycisku
 
-myvar = setTimeout(sessionReload, 20000);
+myvar = setTimeout(sessionReload, 200000);
 function sessionReload() {
   location.reload();
 }
@@ -29,8 +29,49 @@ document.querySelector('.close2-timeout').addEventListener('click', function () 
 
 });
 
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCK612fbjt9QFc-QlpifVbXBFiZWqwj6-s",
+  authDomain: "projekt-kino.firebaseapp.com",
+  databaseURL: "https://projekt-kino.firebaseio.com",
+  projectId: "projekt-kino",
+  storageBucket: "projekt-kino.appspot.com",
+  messagingSenderId: "604403643194",
+  appId: "1:604403643194:web:3623c75ab15c6055"
+};
 
-//powyżej odkomentwać wszystko
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.firestore();
+
+// get password and email from firestore
+
+var email_db;
+var password_db;
+
+db.collection("users").add({
+  first: "new-user",
+  last: "somePassword"
+  // born: 1815
+})
+  .then(function (docRef) {
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function (error) {
+    console.error("Error adding document: ", error);
+  });
+
+
+db.collection("users").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+  });
+});
+
+
+
 
 
 // modal rejestracji
@@ -85,6 +126,17 @@ document.getElementById('btn-wybor-miejsce').addEventListener('click', function 
   document.querySelector('.modal-miejsce-wybor').style.display = 'flex';
 });
 
+// modal repertuaru
+
+document.querySelector('.close2-repertuar').addEventListener('click', function () {
+  document.querySelector('.modal-repertuar').style.display = 'none';
+});
+
+document.getElementById('btn-repertuar').addEventListener('click', function () {
+  console.log("kliknieto  w przycisk repertuar")
+  document.querySelector('.modal-repertuar').style.display = 'flex';
+});
+
 // zamknięcie modala przez kliknięcie obok - jeśli się go włączy to modal logowania nie wyłącza się w ten sposób
 
 // var modal_wybor = document.querySelector('.modal-kino-wybor');
@@ -128,11 +180,43 @@ elements.forEach(function (element) {
       document.getElementById("cena2").classList.remove("ukryj");
     }
   });
-});;
+});
 
 
-// wyswietlenie wybranego kina
+// Repertuar Modal
+var myMovie = JSON.parse(data_film);
 
+
+document.querySelector('.it_id2').addEventListener('click', function () {
+
+  console.log("kliknięto w obrazek it" + "tytuł z jsona: " + myMovie[0].title) ;
+  document.getElementById("movie_title").innerHTML = "Tytuł: " + myMovie[0].title;
+  document.getElementById("year").innerHTML = "Rok: " + myMovie[0].Rok;
+  document.getElementById("genre").innerHTML = "Gatunek: " + myMovie[0].Gatunek;
+  document.getElementById("description").innerHTML = "Opis: " + myMovie[0].opis;
+});
+
+document.querySelector('.cos_id2').addEventListener('click', function () {
+  
+  console.log("kliknięto w obrazek it" + "tytuł z jsona: " + myMovie[1].title) ;
+  document.getElementById("movie_title").innerHTML = "Tytuł: " + myMovie[1].title;
+  document.getElementById("year").innerHTML = "Rok: " + myMovie[1].Rok;
+  document.getElementById("genre").innerHTML = "Gatunek: " + myMovie[1].Gatunek;
+  document.getElementById("description").innerHTML = "Opis: " + myMovie[1].opis;
+  // document.querySelector('.modal-timeout').style.border = "1px solid white";
+});
+
+document.querySelector('.ai_id2').addEventListener('click', function () {
+  
+  console.log("kliknięto w obrazek it" + "tytuł z jsona: " + myMovie[2].title) ;
+  document.getElementById("movie_title").innerHTML = "Tytuł: " + myMovie[2].title;
+  document.getElementById("year").innerHTML = "Rok: " + myMovie[2].Rok;
+  document.getElementById("genre").innerHTML = "Gatunek: " + myMovie[2].Gatunek;
+  document.getElementById("description").innerHTML = "Opis: " + myMovie[2].opis;
+});
+
+
+//wybor filmu
 document.getElementById("wybor").addEventListener("change", function () {
   var selObj = document.getElementById("wybor");
   var selValue = selObj.options[selObj.selectedIndex].value;
@@ -155,6 +239,7 @@ document.getElementById("wybor").addEventListener("change", function () {
 })
 
 document.getElementById("wybor_film").addEventListener("change", function () {
+
   var selObj = document.getElementById("wybor_film");
   var selValue = selObj.options[selObj.selectedIndex].value;
 
@@ -162,16 +247,19 @@ document.getElementById("wybor_film").addEventListener("change", function () {
     document.getElementById("id_to").classList.remove("ukryj");
     document.getElementById("id_cos").classList.add("ukryj")
     document.getElementById("id_ai").classList.add("ukryj")
+    console.log("wczytano jsona z opisem filmu TO: " + myMovie[0].opis);
   }
   if (selValue == "cos") {
     document.getElementById("id_cos").classList.remove("ukryj");
     document.getElementById("id_to").classList.add("ukryj")
     document.getElementById("id_ai").classList.add("ukryj")
+    console.log("wczytano jsona z opisem filmu TO: " + myMovie[1].opis);
   }
   if (selValue == "ai") {
     document.getElementById("id_ai").classList.remove("ukryj");
     document.getElementById("id_cos").classList.add("ukryj")
     document.getElementById("id_to").classList.add("ukryj")
+    console.log("wczytano jsona z opisem filmu TO: " + myMovie[2].opis);
   }
 })
 
@@ -233,6 +321,7 @@ var zalogowano = document.getElementById("zalogowano");
 var e_mail = document.getElementById("user-login");
 
 var myUser = JSON.parse(data_email);
+
 var liczba = Object.keys(myUser).length;
 
 
@@ -265,7 +354,7 @@ myInput.onkeyup = function () {
     cyfra.classList.remove("invalid");
     cyfra.classList.add("valid");
   } else {
-    
+
     cyfra.classList.remove("valid");
     cyfra.classList.add("invalid");
   }
@@ -367,9 +456,8 @@ btnzal.onclick = function () {
     console.log(i);
     if (found_password) {
       console.log("Znaleziono hasło " + myUser[numerr].password);
-      
-    } else 
-    {
+
+    } else {
       console.log("Nie znaleziono hasła");
       document.getElementById("zalogowano").innerHTML = "Hasło jest niepoprawne ";
     }
@@ -398,7 +486,7 @@ btnzal.onclick = function () {
       zalogowano.classList.add("valid_zal");
       document.getElementById("zalogowano").style.color = 'green';
       document.getElementById("zalogowano").innerHTML = " Zalogowano ";
-      
+
       document.getElementById("btn-rej").innerHTML = "TWOJE KONTO";
       //document.getElementById("zalogowano").innerHTML = "Zalogowano";
     }
@@ -431,18 +519,18 @@ btnzal.onclick = function () {
       console.log("Znaleziono mail " + myUser[numer].email);
       emailAndPassword();
 
-    } 
+    }
     else {
       console.log(in_email);
       console.log("nie znaleziono adresu email w bazie danych")
       console.log("Wpisany adres email nie istnieje w bazie użytkowników.");
       document.getElementById("zalogowano").style.color = 'red';
       document.getElementById("zalogowano").innerHTML = "Wpisany adres email nie istnieje w bazie użytkowników";
-      
+
     }
   }
 
-  
+
 
   if (myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters) && e_mail.value.match(emailvalidate) && (myInput.value.length >= 8)) {
 
