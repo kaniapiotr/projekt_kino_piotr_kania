@@ -12,6 +12,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     -->
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
 
 
     <link rel="stylesheet" href="style.css">
@@ -20,15 +27,16 @@
 
 <body>
     <script type="text/javascript" src="data2.js"></script>
+    <script type="text/javascript" src="data_movies.js"></script>
     <header>
         <div class="row">
             <div class="logo">
-                <img src="logo-cinema-white2.png">
+                <img src="img/logo-cinema-white2.png">
             </div>
             <ul class="main-nav">
                 <li class="active"><a href=""> HOME </a></li>
                 <li><a> KINO </a></li>
-                <li><a> REPERTUAR </a></li>
+                <li id="btn-repertuar"><a> REPERTUAR </a></li>
                 <li><a> REZERWACJA </a></li>
                 <li id="btn-kon"> KONTAKT</li>
                 <li id="btn-rej">ZALOGUJ SIĘ</li>
@@ -81,7 +89,7 @@
             <div id="modal-kino-id" class="modal-kino-content animate">
 
                 <div class="close2">+</div>
-                <img src="1.png" width=75px alt="">
+                <img src="img/1.png" width=75px alt="">
 
                 <form action="">
 
@@ -205,6 +213,31 @@
                 </div>
 
             </div>
+        </div>
+
+        <!-- modal repertuaru -->
+        <div class="modal-repertuar">
+            <div id="modal-repertuar-id" class="modal-repertuar-content animate">
+
+                <div class="close2-repertuar">+</div>
+
+                <div class="movie_film">
+                    <div class="it_id2"><img id="it_img" src="img/it.jpg"> </div>
+                    <div class="cos_id2"><img src="img/cos.jpg"> </div>
+                    <div class="ai_id2"><img src="img/ai.jpg"> </div>
+                    <br>
+                    <div class="movie_details">
+                        <a id="movie_title"></a>
+                        <a id="year"></a>
+                        <a id="genre"></a>
+                        <a id="description"></a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
         </div>
 
         <!-- modal alert wygaśnięcia sesji -->
